@@ -7,24 +7,23 @@ var conString = process.env.DB; // "postgres://username:password@localhost/datab
 
 // Routes
 app.get('/api/status', function(req, res) {
-  return res.status(200).send("HELLO WORLD");
-//   pg.connect(conString, function(err, client, done) {
-//     if(err) {
-//       return res.status(500).send('error fetching client from pool');
-//     }
-//     client.query('SELECT now() as time', [], function(err, result) {
-//       //call `done()` to release the client back to the pool
-//       done();
+   pg.connect(conString, function(err, client, done) {
+    if(err) {
+      return res.status(500).send('error fetching client from pool');
+    }
+    client.query('SELECT now() as time', [], function(err, result) {
+      //call `done()` to release the client back to the pool
+      done();
 
-//       if(err) {
-//         return res.status(500).send('error running query');
-//       }
+      if(err) {
+        return res.status(500).send('error running query');
+      }
 
-//       return res.json({
-//         request_uuid: uuid.v4(),
-//         time: result.rows[0].time
-//       });
-//     });
+      return res.json({
+        request_uuid: uuid.v4(),
+        time: result.rows[0].time
+      });
+    });
 //   });
 });
 
