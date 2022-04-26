@@ -10,7 +10,7 @@ app.get('/api/status', function(req, res) {
   const client = new pg.Client(conString);
   client.connect(err => {
     if (err) {
-      console.error("ERROR CONNECTING")
+      console.error("ERROR CONNECTING", err)
       return res.status(500).send('error fetching client from pool');      
     } else {
       console.log("CONNECTED")
