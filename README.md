@@ -1,6 +1,8 @@
 # Devops API App
 
 
+![flujo de trabajo de ejemplo](https://github.com/safeops-challenge/api/actions/workflows/docker-image.yml/badge.svg)
+
 ### install the node packages for the api tier:
 ```sh
 → npm install
